@@ -441,7 +441,6 @@ export default class AttachesTool {
         innerHTML: IconChevronDown,
         href: file.url,
         target: '_blank',
-        rel: 'nofollow noindex noreferrer',
       });
 
       this.nodes.wrapper.appendChild(downloadIcon);
