@@ -1,5 +1,5 @@
 .idea/
 src/
 .eslintrc
-webpack.config.js
+vite.config.js
 yarn.lock

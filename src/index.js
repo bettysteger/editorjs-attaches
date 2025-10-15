@@ -1,4 +1,4 @@
-import './index.pcss';
+import './index.css';
 
 import Uploader from './uploader';
 import { make, moveCaretToTheEnd, isEmpty } from './utils/dom';
