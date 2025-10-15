@@ -30,7 +30,6 @@
     "email": "team@codex.so"
   },
   "devDependencies": {
-    "@codexteam/ajax": "^4.2.0",
     "@editorjs/editorjs": "2.30.0-rc.12",
     "concurrently": "^9.0.1",
     "formidable": "^3.5.1",
@@ -40,6 +39,7 @@
     "vite-plugin-css-injected-by-js": "^3.5.1"
   },
   "dependencies": {
+    "@codexteam/ajax": "^4.2.0",
     "@codexteam/icons": "^0.3.0"
   }
 }
