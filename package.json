@@ -41,5 +41,8 @@
   "dependencies": {
     "@codexteam/ajax": "^4.2.0",
     "@codexteam/icons": "^0.3.0"
+  },
+  "engines": {
+    "node": ">=24.0.0"
   }
 }
