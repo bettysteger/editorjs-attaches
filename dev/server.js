@@ -13,6 +13,8 @@ const http = require('http');
 const formidable = require('formidable');
 const crypto = require('crypto');
 
+const SERVER_PORT = 8008;
+
 /**
  * Sample server for files upload
  */
@@ -80,13 +82,13 @@ class ServerExample {
 
     this.getForm(request)
       .then(({ files }) => {
-        let file = files[this.fieldName] || {};
+        let file = files[this.fieldName][0] || {};
 
         responseJson.success = 1;
         responseJson.file = {
-          url: file.path,
-          name: file.name,
-          size: file.size,
+          url: `http://localhost:${SERVER_PORT}/file/` + file.newFilename,
+          name: file.originalFilename,
+          size: file.size
         };
       })
       .catch((error) => {
@@ -132,8 +134,7 @@ class ServerExample {
   }
 }
 
-
 new ServerExample({
-  port: 8008,
+  port: SERVER_PORT,
   fieldName: 'file'
 });
