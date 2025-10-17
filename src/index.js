@@ -245,7 +245,9 @@ export default class AttachesTool {
   render() {
     const holder = make('div', this.CSS.baseClass);
 
-    this.nodes.wrapper = make('div', this.CSS.wrapper);
+    // Make the whole box clickable in read-only mode
+    this.nodes.wrapper = make(this.readOnly ? 'a' : 'div', this.CSS.wrapper,
+                              this.readOnly ? { href: this.data.file.url, target: '_blank' } : {});
 
     if (this.pluginHasData()) {
       this.showFileData();
@@ -437,20 +439,7 @@ export default class AttachesTool {
     this.nodes.wrapper.appendChild(fileInfo);
 
     if (file.url !== undefined) {
-      // Make the whole box clickable in read-only mode
-      if (this.readOnly) {
-        this.nodes.wrapper.setAttribute('role', 'button');
-        this.nodes.wrapper.addEventListener('click', (event) => {
-          // Don't trigger if clicking on the actual download link
-          if (event.target.closest(`.${this.CSS.downloadButton}`)) {
-            return;
-          }
-          // Open file in new tab/window
-          window.open(file.url, '_blank');
-        });
-      }
-
-      const downloadIcon = make('a', this.CSS.downloadButton, {
+      const downloadIcon = make(this.readOnly ? 'span' : 'a', this.CSS.downloadButton, {
         innerHTML: IconChevronDown,
         href: file.url,
         target: '_blank',
